@@ -1,0 +1,562 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+<title>Account Update</title>
+</head>
+
+<link rel="shortcut icon" href="assets/img/bcbsma.jpg">
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+//<link href="datepicker/css/datepicker.css" rel="stylesheet" />
+//<link href="assets/css/bootstrap-united.css" rel="stylesheet" />
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+//<link href="static/css/jquery-ui.css" rel="stylesheet" />
+
+//<script src="static/js/jquery-1.8.3.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+//<script src="datepicker/js/bootstrap-datepicker.js"></script>
+//<script src="datepicker/js/bootstrap.min.js"></script>
+//<script src="static/js/jquery-ui.js"></script>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0s/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.0.2/sumoselect.min.css">
+<link rel="stylesheet" 
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.0.2/jquery.sumoselect.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<style>
+body {
+	/* height: 100%; */
+	margin: 0;
+	background-size: 1366px 768px;
+	background-repeat: no-repeat;
+	background-color:#daf7f8;
+	display: compact;
+}
+.form-inline .form-control{
+	width:100%;
+}
+.form-inline label{padding-right:10px;}
+.form-inline{padding-top:3px;padding-bottom:3px;}
+.sumo_responseType {
+	width: 270px;
+}
+div.a {
+  font-size: 10px;
+}
+.select-all {
+	height: 35px !important;
+}
+
+.btnOk {
+	color: blue;
+}
+
+.btnCancel {
+	color: red;
+}
+
+.request_div_width {
+	width: 970px !important;
+}
+
+.header_color {
+	background-color: cornflowerblue !important;
+	border-color: #FAEBD7;
+}
+
+.header_back_color {
+	background-color: lightseagreen !important;
+}
+
+.select_box_height {
+	height: 30px;
+}
+
+.mid_position {
+	margin-left: 5%;
+}
+
+.option_position {
+	margin-left: 5%;
+	margin-top: 1%;
+}
+
+.footer_position {
+	bottom: -5%;
+	position: fixed;
+	width: 100%;
+}
+
+.required:after {
+	content: " *";
+	color: red;
+}
+
+.confirm_content {
+	display: inline;
+}
+
+.dp_none {
+	display: none;
+}
+
+.anchor_tag_height {
+	margin-top: 6px;
+}
+
+.button_bold {
+	font-weight: bold;
+}
+
+.button_bold_wo_color {
+	font-weight: bold;
+}
+
+.menu_color {
+	background-color: lightblue;
+}
+.navbar-default{
+  background-color: #98AFC7;
+ /*  border-color: #425766; */
+}
+.alert{
+	padding: 10px !important;
+}
+.ui-datepicker-trigger{
+	position: absolute;
+    right: 20px;
+    height: 20px;
+    bottom: 5px;
+}
+.topnav-right {
+  float: right;
+}
+
+/* Ugesh added */
+
+.col-lg-6 {
+    width: 100%;
+}
+</style>
+<script>
+   function f1(){
+       conscole.log("Indside f1")
+        $("#psaYes").css("display:block");
+        $("radioNo").toggle();
+    }
+
+function saveESS() {
+	console.log("print");
+// 	document.addESSForm.action = "saveESS.do";
+	
+		$.ajax({
+			type: "POST",
+		    url: './saveESS.do',
+		    success: function(result){
+		    	alert();
+		    // when successfully return from your java  
+		    }, error: function(){
+		       // when got error
+		    }
+		}); 
+		 
+
+	document.addESSForm.submit();
+}
+</script>
+<body>
+	<nav class="navbar">
+		<div class="topnav-right">
+            <a href="showMenu.do"><span class="glyphicon glyphicon-home"></span>Home</a>
+            <a><span class="fa fa-user-circle-o"></span><b><i>${uname}</b></i></a>
+            <a href="login.do"><span class="glyphicon glyphicon-off"></span> Log out</a>
+		</div>
+    </nav>
+    <div class ="container">
+        <div class ="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-3" >
+                    <label class="control-label" style="float:left;" >Enrollment Specialist Person</label>	
+                    </div>
+                    <div class="col-lg-3">
+                    <select path="enrollmentSpecialist" class="form-control input-sm" style="float:right;">
+                        <option value="" label="Choose"></option>
+                        <option value="Ellen Ward" label="Ellen Ward"> Ellen Ward</option>
+                        <option value="Michael Andrews" label="Michael Andrews">Michael Andrews</option>
+                        <option value="multi-Tenant" label="Multi-Tenant">multi-Tenant</option>
+                    </select>
+                    </div>
+                    <div class="col-lg-2"> 
+                    <i  style="font-size:30px;" class="fas fa-user-plus" data-toggle="modal" data-target="#myModal"></i><i  style="margin-left:10px;font-size:30px;" class="fas fa-user-minus"></i>    
+                    </div>
+                         <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                    <label class="control-label">Customer Contact Number</label></div>
+                                    <div class="col-lg-6">
+                                    <form:input path="customerContactNumber" type="text" class="form-control input-sm" id="customerContactNumber" placeholder="Enter Customer Contact Number" />	                                
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <div class="row">
+                        <div class="col-lg-4">
+                                <div class="form-inline row">
+                                    <div class="col-lg-6">
+                                    <label class="control-label">Account Name</label></div>
+                                    <div class="col-lg-6">
+                                    <form:select path="accountName" class="form-control input-sm">
+                                    <form:option value="" label="Choose"/>
+                                    <form:option value="cape" label="CAPE OF MUNICIPALITIES"/>
+                                </form:select></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                    <label class="control-label">Account Short Name</label></div>
+                                    <div class="col-lg-6">
+                                    <form:input path="accountShortName" type="text" class="form-control input-sm" id="accountShorName" placeholder="Enter AccountShortName" />	                                
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                    <div class="form-inline row">
+                                            <div class="col-lg-6">
+                                    <label class="control-label">Account Number</label></div>
+                                    <div class="col-lg-6">
+                                    <form:input path="accountNumber" type="text" class="form-control input-sm" id="accountNumber" placeholder="Enter AccountNumber" />
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+                <div class="row">
+                        <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                <label class="control-label">Account Contact Name</label></div>
+                                <div class="col-lg-6">
+                            <form:input path="accountContactName" type="text" class="form-control input-sm" id="accountContactName" placeholder="Enter AccountContactName" />	
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                <label class="control-label">Account Phone Number</label></div>
+                                <div class="col-lg-6">
+                                <form:input path="accountPhoneNumber" type="text" class="form-control input-sm" id="accountPhoneNumber" placeholder="Enter AccountPhoneNo" />	                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                        <label class="control-label">Account Email</label></div>
+                                        <div class="col-lg-6">
+                                        <form:input path="accountEmail" type="text" class="form-control input-sm" id="accountEmail" placeholder="name@example.com" />
+                                        </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-lg-4">
+                                    <div class="form-inline row">
+                                            <div class="col-lg-6">
+                                <label class="control-label">Anniversary Month</label></div>
+                                <div class="col-lg-6">
+                                <form:select path="anniversaryMonth" class="form-control input-sm">
+                                <form:option value="" label="Choose"/>
+                                <form:option value="jan" label="January"/>
+                                <form:option value="feb" label="February"/>
+                                <form:option value="mar" label="March"/>
+                                <form:option value="apr" label="April"/>
+                                <form:option value="may" label="May"/>
+                                <form:option value="jun" label="June"/>
+                                <form:option value="jul" label="July"/>
+                                <form:option value="aug" label="August"/>
+                                <form:option value="sep" label="September"/>
+                                <form:option value="oct" label="October"/>
+                                <form:option value="nov" label="November"/>
+                                <form:option value="dec" label="December"/>
+                                </form:select>
+                            </div>
+                            </div>
+                        </div>
+                  
+                        <div class="col-lg-4">
+                                    <div class="form-inline row">
+                                            <div class="col-lg-6">
+                                <label class="control-label">Account Status</label></div>
+                                <div class="col-lg-6">
+                                    <form:select path="accountStatus" class="form-control input-sm">
+                                        <form:option value="" label="Choose"/>
+                                        <form:option value="new" label="New"/>
+                                        <form:option value="testing" label="Testing"/>
+                                        <form:option value="active" label="Active"/>
+                                        <form:option value="cancelled" label="Cancelled"/>
+                                            
+                                </form:select>
+                                </div>
+                                </div>
+                        </div>                          
+                     </div>
+                <div class="row">
+                            <div class="col-lg-4">
+                                    <div class="form-inline row">
+                                            <div class="col-lg-6">
+                                 <label class="control-label">SFTP Stage User ID</label></div>
+                                 <div class="col-lg-6">
+                                <form:input path="sftpStageId" type="text" class="form-control" id="sftpStageId" placeholder="SFTP STG user ID" />	
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-lg-4">
+                                    <div class="form-inline row">
+                                            <div class="col-lg-6">
+                                    <label class="control-label">SFTP Production User ID</label></div>
+                                    <div class="col-lg-6">
+                                    <form:input path="sftpProdId" type="text" class="form-control input-sm" id="sftpProdId" placeholder="SFTP PROD User ID" />	               
+                                    </div>
+                            </div>                        
+                           </div>
+                     </div>
+                <div class="row">
+                            <div class="col-lg-4">
+                                <label class="control-label">Account Status Date</label>
+                             </div>
+                         </div>
+                <div class="row">
+                           <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                              <label class="control-label">Date Assigned</label></div>
+                              <div class="col-lg-6">
+                             <form:input path="statusDateAssigned" type="text" class="form-control input-sm" id="statusDateAssigned" autocomplete="off" placeholder="MMDDYYYY" />	
+                             </div>
+                            </div>
+                         </div>
+                         <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                 <label class="control-label">Testing Start Date</label></div>
+                                 <div class="col-lg-6">
+                                 <form:input path="statusTestingDate" type="text" class="form-control input-sm" id="statusTestingDate" autocomplete="off" placeholder="MMDDYYYY" />	               
+                                </div> 
+                                </div>
+                         </div>
+                          <div class="col-lg-4">
+                                <div class="form-inline row">
+                                        <div class="col-lg-6">
+                                 <label class="control-label">Moved To Production</label></div>
+                                 <div class="col-lg-6">
+                                 <form:input path="statusMovedToProd" type="text" class="form-control input-sm" id="statusMovedToProd" autocomplete="off" placeholder="MMDDYYYY" />	               
+                                </div>
+                                </div>
+                         </div>
+                       
+                </div>
+                   
+            <div class="row">
+                <div class="col-lg-4">
+                    <label class="control-label">Open Enrollment</label>
+                </div>
+            </div>
+           <div class="row">
+              <div class="col-lg-4">
+                    <div class="form-inline row">
+                            <div class="col-lg-6">
+                 <label class="control-label">File Expected Date</label></div>
+                 <div class="col-lg-6">
+                <form:input path="enrFileExpectedDate" type="text" class="form-control input-sm" id="enrFileExpectedDate" placeholder="MMDDYYYY" />	
+                </div>
+            </div>
+            </div>
+            <div class="col-lg-4">
+                    <div class="form-inline row">
+                            <div class="col-lg-6">
+                    <label class="control-label">Actual Expected Date</label></div>
+                    <div class="col-lg-6">
+                    <form:input path="enrFileActualDate" type="text" class="form-control input-sm" id="enrFileActualDate" placeholder="MMDDYYYY" />	  
+                    </div>             
+                    </div>
+            </div>
+            </div>
+            <div class="row">	
+                    <span class="col-lg-6 control-label"><b>Account Contact Types</b></span>
+                </div>
+            <div class="row">	
+                    <span class="col-lg-3 control-label"><b></b></span>
+                     <span class="col-lg-3 control-label"><b>Name</b></span>
+                     <span class="col-lg-3 control-label"><b>Telephone Number</b></span>
+                     <span class="col-lg-3 control-label"><b>Email</b></span>
+                     
+                </div>
+            	<div class="row">
+                        <span class="col-lg-3 control-label"><b>Implementation Contact</b></span>
+                            <div class="form-group">		               	                   
+                                    <div class="col-lg-3">
+                                      <input type="text" class="form-control inputstl" id="implContactName" placeholder="Implementation Contact Name">
+                                    </div>
+                                      <div class="col-lg-3">
+                                      <input type="text" class="form-control inputstl" id="implContactPhone" placeholder="Implementation Contact Phone#">
+                                    </div>
+                                    <div class="col-lg-3">
+                                      <input type="text" class="form-control inputstl" id="implContactEmail" placeholder="Implementation Contact Email">
+                                    </div>
+                            </div>
+                        </div>
+                            
+                       <div class="row">
+                                <span class="col-lg-3 control-label"><b>Report Contact</b></span>
+                               
+                                    <div class="form-group ">		               	                   
+                                            <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="reportContactName" placeholder="Report Contact Name">
+                                            </div>
+                                              <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="reportContactPhone" placeholder="Report Contact Phone#">
+                                            </div>
+                                            <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="reportContactEmail" placeholder="Report Contact Email">
+                                            </div>
+                                    </div>
+                                </div>
+                     
+                            
+                                <div class="row">
+                                <span class="col-lg-3 control-label"><b>TPA Contact</b></span>
+                            
+                                    <div class="form-group ">		               	                   
+                                            <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="tpaContactName" placeholder="TPA Contact Name">
+                                            </div>
+                                              <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="tpaContactPhone" placeholder="TPA Contact Phone#">
+                                            </div>
+                                            <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="tpaContactEmail" placeholder="TPA Contact Email">
+                                            </div>
+                                    </div>
+                               
+                            </div>
+                            <div class="row">
+                                <span class="col-lg-3 control-label"><b>Broker Contact</b></span>		               	                   
+                                            <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="brokerContactName" placeholder="Broker Contact Name">
+                                            </div>
+                                              <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="brokerContactPhone" placeholder="Broker Contact Phone">
+                                            </div>
+                                            <div class="col-lg-3">
+                                              <input type="text" class="form-control inputstl" id="brokerContactEmail" placeholder="Broker Contact Email">
+                                            </div>
+                                    </div>
+                              
+                              <div class="row">
+                                <span class="col-lg-3 control-label"><b>PSA Offering</b></span>	
+                              	               	                     
+                            <div class="col-lg-1">
+                                    <input type="radio" name="browser" value="no">No
+                                    <input type="radio" name="browser" onclick="f1()" value="yes">Yes
+                                    </div>
+                                        <div class="col-lg-3">
+                                        <form:select id="psaYes" style="display:none"  class="form-control input-sm">
+                                                <form:option value="" label="Choose"/>
+                                                <form:option value="cape" label="CAPE OF MUNICIPALITIES"/>
+                                            </form:select>                                          
+                                            </div>
+                                     
+                                    </div>
+
+  
+
+
+                                
+
+                                    <div class="row">
+                                            <div class="form-group">
+                                <label class="col-lg-2 control-label" style="text-align:Right;">Submitter Type</label>	
+                              
+                                  <div class="col-lg-4">
+                                      <form:select path="submitterType" class="form-control input-sm">
+                                            <form:option value="" label="Choose"/>
+                                            <form:option value="self" label="Self"/>
+                                            <form:option value="tpa" label="TPA"/>
+                                             <form:option value="multi-Tenant" label="Multi-Tenant"/>
+                                        </form:select>
+                                  
+                                    </div>	
+                                    </div>    
+                                    </div>	
+                                    <div id="wizard">
+                      <button id="save" class="btn btn-primary pull-right">SAVE</button>
+                      </div>
+                      
+            
+
+
+        </div>
+
+    </div>
+
+
+
+
+				    <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add Enrollment Specialist</h4>
+        </div>
+        <div class="modal-body">
+       		 <form:form class="form-horizontal" id ="addESSForm" action = "saveESS.do" method="post" modelAttribute="enrollmentSpecialist">
+                            <div class="form-group">
+                              <label class="col-lg-3 control-label" style="text-align:Right;">Name</label>	
+							  <div class="col-lg-7"><input class="form-control" name="essName" placeholder="Name" type="text"></div>					   
+                            </div>
+                           <div class="form-group">
+                              <label class="col-lg-3 control-label" style="text-align:Right;">Email</label>	
+							  <div class="col-lg-7"><input class="form-control" name="essEmail" id="essEmail" placeholder="name@example.com" type="text"></div>					   
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-3 control-label" style="text-align:Right;">Role</label>	
+							  <div class="col-lg-7"><input class="form-control" name="essRole" placeholder="Lead/User" type="text"></div>					   
+                            </div>
+
+					       <div class="modal-footer">
+                                <button type="button" class="btn pull-right" data-dismiss="modal">Close</button>
+					       		<button class="btn btn-primary pull-right">ADD</button>
+					           </div>
+                        </form:form>
+        </div>
+      </div>
+    </div>
+  </div>	
+	
+	 <script>
+	$( "#statusDateAssigned , #statusTestingDate, #statusMovedToProd" ).datepicker({
+	      showOn: "both",
+	      buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+	      buttonText: "Select date",
+	      buttonImageOnly: true,
+	    });
+	</script> 
+</body>
+</html>
